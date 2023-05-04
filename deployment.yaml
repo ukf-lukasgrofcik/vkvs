@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vkvs-deployment
+  namespace: vkvs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vkvs
+  template:
+    metadata:
+      labels:
+        app: vkvs
+    spec:
+      containers:
+        - name: vkvs
+          image: lukasgrofcik/vkvs:latest
+          env:
+            - name: APP_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: vkvs-configmap
+                  key: app_name
+          ports:
+            - containerPort: 8080

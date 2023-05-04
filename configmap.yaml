@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vkvs-configmap
+  namespace: vkvs
+data:
+  app_name: "Lukas Node App"
